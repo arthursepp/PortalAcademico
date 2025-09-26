@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %}
     Meu documento
-{% endblock title %}
-    
+{% endblock title %}    
 
 {% block content %}
-    <h1>Olá humano!</h1>
+    <h1 class="text-red-500">Olá humano!</h1>
+    <button type="button" id="btn">Enviar</button>
 {% endblock content %}
-    
+
+
+{% block extra_js %}
+    <script src="{% static 'js/scripts_index.js' %}"></script>
+{% endblock extra_js %}
+
