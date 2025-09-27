@@ -1,7 +1,8 @@
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+AUTH_USER_MODEL = "app.Pessoa"
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
