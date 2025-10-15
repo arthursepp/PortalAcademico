@@ -44,13 +44,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [ BASE_DIR / 'app' / 'static' ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'app' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,9 +98,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = 'index'
+LOGIN_REDIRECT_URL = 'portal'
+LOGOUT_REDIRECT_URL = 'index'
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 LANGUAGE_CODE = 'pt-br'
 

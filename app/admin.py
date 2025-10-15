@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import *
+
 from .models import (
-	Unidade, Pessoa, Departamento, Curso, Disciplina, Semestre, Turma,
-	Matricula, Frequencia, Avaliacao, Nota, ResultadoFinal
+    Unidade, Pessoa, Departamento, Curso, Disciplina, Semestre, Turma,
+    Matricula, Frequencia, Avaliacao, Nota, ResultadoFinal
 )
 
 admin.site.register(Unidade)

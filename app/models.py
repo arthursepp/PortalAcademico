@@ -43,6 +43,8 @@ class Pessoa(AbstractUser):
 
     unidade = models.ForeignKey(Unidade, on_delete=models.CASCADE, related_name="pessoas", null=True, blank=True)
 
+    foto_perfil = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
+
     def __str__(self):
         unidade_nome = self.unidade.nome if self.unidade else "Sem Unidade"
         return f"{unidade_nome} - {self.last_name}, {self.first_name}"
@@ -74,6 +76,17 @@ class Curso(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.departamento.unidade.nome}"
 
+class ProgressaoAcademica(models.Model):
+    aluno = models.OneToOneField(Pessoa, on_delete=models.CASCADE, related_name="progressao")
+    percentual_progressao = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    percentual_rendimento = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    percentual_progressao_intercambio = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    semestre_atual = models.PositiveSmallIntegerField(default=1)
+    disciplinas_cursadas = models.PositiveIntegerField(default=0)
+    data_calculo = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Progressão de {self.aluno.username}"
 
 class Disciplina(models.Model):
     nome = models.CharField(max_length=200)

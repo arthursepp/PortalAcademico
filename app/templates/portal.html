@@ -1,0 +1,47 @@
+<!-- app/templates/portal.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Portal Acadêmico{% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <div>
+            <div>
+                <h2>Bem-vindo(a), {{ user.first_name }} {{ user.last_name }}!</h2>
+                <p>Papel: {{ user.get_papel_display }}</p>
+                <p>Unidade: {{ user.unidade.nome|default:"Sem unidade" }}</p>
+            </div>
+
+            <!-- Aqui você pode adicionar o conteúdo específico para cada tipo de usuário -->
+            {% if user.papel == 'aluno' %}
+            <div>
+                <div>
+                    <h3>Área do Aluno</h3>
+                </div>
+                <div>
+                    <p>Conteúdo específico para alunos...</p>
+                </div>
+            </div>
+            {% elif user.papel == 'professor' %}
+            <div>
+                <div>
+                    <h3>Área do Professor</h3>
+                </div>
+                <div>
+                    <p>Conteúdo específico para professores...</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <button id="btn">Clica</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/scripts_portal.js' %}"></script>
+{% endblock scripts %}
+    
